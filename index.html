@@ -8,9 +8,36 @@
       function computerPlay() {
          const compArray = ['Rock','Paper','Scissors'] ;
          const randomNumber = Math.floor(Math.random() * compArray.length);
-         const computerSelection = compArray[randomNumber];
-         return(computerSelection);
+         const choice = compArray[randomNumber];
+         return(choice);
       }
+
+      const computerSelection = computerPlay()
+
+      function playRound(input, computerSelection) {
+
+        const playerSelection = (input.charAt(0).toUpperCase() + input.slice(1).toLowerCase());
+
+        if (playerSelection == computerSelection) {
+          return('Tie game! ' + playerSelection + ' equals ' + computerSelection + '.');
+        }
+
+        else if ((playerSelection == 'Rock' && computerSelection == 'Scissors') || (playerSelection == 'Scissors' && computerSelection == 'Paper') || (playerSelection == 'Paper' && computerSelection == 'Rock')) {
+          return('You win! ' + playerSelection + ' beats ' + computerSelection + '.');
+        }
+
+        else if ((playerSelection == 'Rock' && computerSelection == 'Paper') || (playerSelection == 'Paper' && computerSelection == 'Scissors') || (playerSelection == 'Scissors' && computerSelection == 'Rock')) {
+          return('You lose :( ' + computerSelection + ' beats ' + playerSelection + '.');
+        }
+
+        else {
+          alert('Error!');
+        }
+
+        console.log(playerSelection, computerSelection);
+
+      }
+
   </script>
 </body>
 </html>
