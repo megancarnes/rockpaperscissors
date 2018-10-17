@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock, Paper, Scissors!</title>
+</head>
+<body>
+  <script>
+      function computerPlay() {
+         const compArray = ['Rock','Paper','Scissors'] ;
+         const randomNumber = Math.floor(Math.random() * compArray.length);
+         const computerSelection = compArray[randomNumber];
+         return(computerSelection);
+      }
+  </script>
+</body>
+</html>
