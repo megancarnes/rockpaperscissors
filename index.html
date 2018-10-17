@@ -12,30 +12,30 @@
          return(choice);
       }
 
-      const computerSelection = computerPlay()
+      let computerSelection = computerPlay()
 
       function playRound(input, computerSelection) {
-
         const playerSelection = (input.charAt(0).toUpperCase() + input.slice(1).toLowerCase());
-
         if (playerSelection == computerSelection) {
-          return('Tie game! ' + playerSelection + ' equals ' + computerSelection + '.');
+          return('Tie game! You both picked ' + playerSelection.toLowerCase() + '.');
         }
-
         else if ((playerSelection == 'Rock' && computerSelection == 'Scissors') || (playerSelection == 'Scissors' && computerSelection == 'Paper') || (playerSelection == 'Paper' && computerSelection == 'Rock')) {
-          return('You win! ' + playerSelection + ' beats ' + computerSelection + '.');
+          return('You win! ' + playerSelection + ' beats ' + computerSelection.toLowerCase() + '.');
         }
-
         else if ((playerSelection == 'Rock' && computerSelection == 'Paper') || (playerSelection == 'Paper' && computerSelection == 'Scissors') || (playerSelection == 'Scissors' && computerSelection == 'Rock')) {
-          return('You lose :( ' + computerSelection + ' beats ' + playerSelection + '.');
+          return('You lose :( ' + computerSelection + ' beats ' + playerSelection.toLowerCase() + '.');
         }
-
         else {
           alert('Error!');
         }
 
-        console.log(playerSelection, computerSelection);
+      }
 
+      var turn;
+      function game() {
+        for (turn = 0; turn < 5; turn++) {
+          playRound(input, computerSelection);
+        }
       }
 
   </script>
