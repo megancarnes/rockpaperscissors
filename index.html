@@ -17,13 +17,13 @@
       function playRound(input, computerSelection) {
         const playerSelection = (input.charAt(0).toUpperCase() + input.slice(1).toLowerCase());
         if (playerSelection == computerSelection) {
-          return('Tie game! You both picked ' + playerSelection.toLowerCase() + '.');
+          return('This round is a tie! You both picked ' + playerSelection.toLowerCase() + '.');
         }
         else if ((playerSelection == 'Rock' && computerSelection == 'Scissors') || (playerSelection == 'Scissors' && computerSelection == 'Paper') || (playerSelection == 'Paper' && computerSelection == 'Rock')) {
-          return('You win! ' + playerSelection + ' beats ' + computerSelection.toLowerCase() + '.');
+          return('You win this round! ' + playerSelection + ' beats ' + computerSelection.toLowerCase() + '.');
         }
         else if ((playerSelection == 'Rock' && computerSelection == 'Paper') || (playerSelection == 'Paper' && computerSelection == 'Scissors') || (playerSelection == 'Scissors' && computerSelection == 'Rock')) {
-          return('You lose :( ' + computerSelection + ' beats ' + playerSelection.toLowerCase() + '.');
+          return('You lose this round :( ' + computerSelection + ' beats ' + playerSelection.toLowerCase() + '.');
         }
         else {
           alert('Error!');
@@ -31,10 +31,44 @@
 
       }
 
-      var turn;
+  
+
       function game() {
-        for (turn = 0; turn < 5; turn++) {
-          playRound(input, computerSelection);
+        let playerWin = 0;
+        let computerWin = 0;
+        let tieGame = 0;
+
+        while ((playerWin + computerWin + tieGame < 5) && (playerWin < 3) && (computerWin < 3)) {
+          let input = prompt('Rock, paper, or scissors?');
+          let computerSelection = computerPlay();
+          let result = playRound(input, computerSelection);
+
+          if (result.includes("win")) {
+            playerWin++;
+            alert(result + ' Score: ' + playerWin + '-' + computerWin + '.');
+          }
+          else if (result.includes("lose")) {
+            computerWin++;
+            alert(result + ' Score: ' + playerWin + '-' + computerWin + '.');
+          }
+        
+          else if (result.includes("tie")) {
+            tieGame++;
+            alert(result + ' Score: ' + playerWin + '-' + computerWin + '.');
+          }
+        
+        }
+
+        if (playerWin > computerWin) {
+          return('You win! You: ' + playerWin + '. Computer: ' + computerWin + '.');
+        }
+
+        else if (computerWin > playerWin) {
+          return('You lose. You: ' + playerWin + '. Computer: ' + computerWin + '.');
+        }
+
+        else if (computerWin == playerWin) {
+         return('Tie game! You: ' + playerWin + '. Computer: ' + computerWin + '.');
         }
       }
 
